@@ -2,9 +2,10 @@
 import "server-only";
 import { createClient } from "@supabase/supabase-js";
 import Stripe from "stripe";
+import { SUPABASE_URL } from "./publicConfig";
 
 export function adminClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const url = SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !key) throw new Error("Supabase n'est pas configuré (voir .env.example).");
   return createClient(url, key, { auth: { persistSession: false } });

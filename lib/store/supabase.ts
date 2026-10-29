@@ -7,11 +7,12 @@
  */
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { AppUser, Store, Template } from "./types";
+import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL } from "../publicConfig";
 
 let client: SupabaseClient | null = null;
 export function supabase() {
   if (!client) {
-    client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!);
+    client = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
   }
   return client;
 }
