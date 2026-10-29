@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+/*
+  Identité Signa : les deux mains sont le motif de la marque.
+  Main gauche = orange, main droite = bleu, partout (logo, squelettes, graphiques).
+  Typo : Bricolage Grotesque pour les titres, Atkinson Hyperlegible pour le texte,
+  une police conçue pour la lisibilité (Braille Institute) : cohérent avec un produit d'accessibilité.
+*/
+:root {
+  --bg: #f3f5fa;
+  --surface: #ffffff;
+  --surface-2: #e9edf6;
+  --ink: #131a2e;
+  --muted: #59627a;
+  --line: #d9dfeb;
+  --accent: #2f47cc;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3e8ff;
+  --hand-left: #e4610f;
+  --hand-right: #2f47cc;
+  --skeleton: #8b94a9;
+  --ok: #17885c;
+  --ok-soft: #dcf3e8;
+  --warn: #b5530b;
+  --warn-soft: #fdebd9;
+  --bad: #c0302f;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1120;
+    --surface: #151a2c;
+    --surface-2: #1d2338;
+    --ink: #e7eaf4;
+    --muted: #98a1b8;
+    --line: #2a3150;
+    --accent: #8696ff;
+    --accent-ink: #0d1120;
+    --accent-soft: #232b55;
+    --hand-left: #ff8d4d;
+    --hand-right: #8696ff;
+    --skeleton: #6c7590;
+    --ok: #3fcf92;
+    --ok-soft: #12352a;
+    --warn: #ffa25e;
+    --warn-soft: #3a2614;
+    --bad: #ff7471;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1120;
+  --surface: #151a2c;
+  --surface-2: #1d2338;
+  --ink: #e7eaf4;
+  --muted: #98a1b8;
+  --line: #2a3150;
+  --accent: #8696ff;
+  --accent-ink: #0d1120;
+  --accent-soft: #232b55;
+  --hand-left: #ff8d4d;
+  --hand-right: #8696ff;
+  --skeleton: #6c7590;
+  --ok: #3fcf92;
+  --ok-soft: #12352a;
+  --warn: #ffa25e;
+  --warn-soft: #3a2614;
+  --bad: #ff7471;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-hand-l: var(--hand-left);
+  --color-hand-r: var(--hand-right);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.7rem 1.3rem;
+  font-weight: 700;
+  transition: transform 0.12s ease, background 0.15s ease, opacity 0.15s;
+  cursor: pointer;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.btn-primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+}
+.btn-ghost:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+.label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  padding: 0.7rem 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
